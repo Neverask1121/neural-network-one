@@ -7,7 +7,13 @@ import pickle
 
 ## Loading the trained model
 
-model=tf.keras.models.load_model('model.h5')
+# model=tf.keras.models.load_model('model.h5')
+
+@st.cache_resource
+def load_ann_model():
+    return tf.keras.models.load_model("model.h5")
+
+model = load_ann_model()
 
 ## Load the encoders and scalers
 
@@ -63,7 +69,7 @@ input_data_scaled = scaler.transform(input_data)
 
 
 # Predict churn
-prediction = model.predict(input_data_scaled)
+prediction = model.predict(input_data_scaled, verbose=0)
 prediction_proba = prediction[0][0]
 
 st.write(f'Churn Probability: {prediction_proba:.2f}')
