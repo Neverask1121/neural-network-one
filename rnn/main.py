@@ -13,7 +13,7 @@ reverse_word_index = {value: key for key, value in word_index.items()}
 
 ## Load the pretrained model with the relu activation function
 
-model=load_model('rnn/simple_rnn_imdb.h5')
+model=load_model('simple_rnn_imdb.h5')
 
 ## Creating our helper functions
 
@@ -53,4 +53,18 @@ st.write('Enter the review of a movie to classify it as Positive or Negative')
 
 user_input = st.text_area('Movie Review')
 
-if st.button('Classify')
+if st.button('Classify'):
+  preprocessed_input = preprocess_text(user_input)
+
+  ## making the prediction
+
+  prediction = model.predict(preprocessed_input)
+  sentiment = 'Positive' if prediction[0][0] > 0.5 else 'Negative'
+
+  ## Display the result
+
+  st.write(f'Sentiment: {sentiment}')
+  st.write(f'Prediction Score: {prediction[0][0]}')
+
+else:
+  st.write('Please enter a movie review.')
