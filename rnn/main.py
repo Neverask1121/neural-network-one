@@ -26,11 +26,35 @@ def decode_reviews(encoded_review):
 
 ## Function to preprocess use input
 
+import re
+
 def preprocess_text(text):
-  words = text.lower().split()
-  encoded_review = [word_index.get(word, 2) + 3 for word in words]
-  padded_review = sequence.pad_sequences([encoded_review], maxlen=500)
-  return padded_review
+
+    text = re.sub(r"[^a-zA-Z\s]", "", text)
+
+    words = text.lower().split()
+
+    encoded_review = []
+
+    for word in words:
+
+        if word not in word_index:
+            encoded_review.append(2)
+            continue
+
+        index = word_index[word] + 3
+
+        if index < 10000:
+            encoded_review.append(index)
+        else:
+            encoded_review.append(2)
+
+    padded_review = sequence.pad_sequences(
+        [encoded_review],
+        maxlen=500
+    )
+
+    return padded_review
 
 ## Prediction function presenting
 
