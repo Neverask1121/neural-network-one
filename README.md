@@ -1,1 +1,1 @@
-# neural-network-one
+* so bro this the website that I created for the RNN one so you can check it out : <a href="https://neural-network-one-lopyabuiq9armubdatbwej.streamlit.app/">RNN</a>
