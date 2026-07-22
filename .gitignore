@@ -2,3 +2,4 @@
 venv
 Churn_Modelling.csv
 .venv
+.devcontainer
