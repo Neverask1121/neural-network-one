@@ -6,7 +6,7 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 ## Load the LSTM model
 
-model=load_model('next_word_lstm.h5')
+model=load_model('LSTM RNN/next_word_lstm.h5')
 
 ## Load the tokenizer
 
