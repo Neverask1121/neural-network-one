@@ -10,7 +10,7 @@ model=load_model('LSTM RNN/next_word_lstm.h5')
 
 ## Load the tokenizer
 
-with open('tokenizer.pickle', 'rb') as handle:
+with open('LSTM RNN/tokenizer.pickle', 'rb') as handle:
   tokenizer=pickle.load(handle)
 
 ## Funciton to predict the next word
